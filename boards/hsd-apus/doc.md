@@ -43,6 +43,9 @@ USART4 on the UART connector shares its interrupt with USART3, which RIOT's
 UART driver does not support, so it is not configured. RIOT has no drivers for
 the MCP79410 RTC and the XPT2046 touch controller.
 
+USB needs support for the STM32F0 in RIOT's `usbdev_fs` driver, which is not
+upstream yet.
+
 The Arduino header provides `arduino_pins`, `arduino_analog`, `arduino_spi`
 and `arduino_uart`. Its SDA/SCL pins share their nets with A4/A5, so no I2C bus
 is mapped.
