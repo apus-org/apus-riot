@@ -1,0 +1,57 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    container: riot/riotbuild:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: apus-riot
+          persist-credentials: false
+
+      - name: Checkout RIOT
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: RIOT-OS/RIOT
+          path: RIOT
+          persist-credentials: false
+
+      - name: Build applications
+        shell: bash
+        env:
+          BOARD: hsd-apus
+          GIT_CACHE_RS: ""
+        run: |
+          export EXTERNAL_BOARD_DIRS="$GITHUB_WORKSPACE/apus-riot/boards"
+          while read -r app args; do
+            echo "::group::$app $args"
+            make -C "RIOT/$app" $args
+            rm -rf "RIOT/$app/bin"
+            echo "::endgroup::"
+          done <<'EOF'
+          examples/basic/hello-world
+          examples/basic/blinky
+          examples/basic/saul
+          tests/periph/adc
+          tests/periph/dac
+          tests/periph/gpio_arduino
+          tests/periph/i2c
+          tests/periph/pwm
+          tests/periph/spi
+          tests/periph/timer
+          tests/periph/uart
+          tests/drivers/at24cxxx
+          tests/drivers/candev
+          tests/drivers/lm75 DRIVER=lm75a
+          tests/drivers/st77xx DRIVER=st7789
+          tests/sys/ztimer_overhead
+          EOF
