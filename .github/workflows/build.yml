@@ -54,4 +54,9 @@ jobs:
           tests/drivers/lm75 DRIVER=lm75a
           tests/drivers/st77xx DRIVER=st7789
           tests/sys/ztimer_overhead
+          ../apus-riot/tests/xpt2046
+          ../apus-riot/tests/xpt2046 XPT2046_POLLING_MODE=1
           EOF
+          echo "::group::tests/xpt2046 USEMODULE=touch_dev"
+          USEMODULE=touch_dev make -C apus-riot/tests/xpt2046
+          echo "::endgroup::"

@@ -136,6 +136,23 @@ extern "C" {
 /** @} */
 
 /**
+ * @name    XPT2046 touch controller
+ * @{
+ */
+#define XPT2046_PARAM_SPI_DEV       SPI_DEV(0)
+#define XPT2046_PARAM_CLK           SPI_CLK_400KHZ
+#define XPT2046_PARAM_CS            GPIO_PIN(PORT_E, 12)
+#define XPT2046_PARAM_INT_PIN       GPIO_PIN(PORT_F, 2)
+#define XPT2046_PARAM_XMAX          LCD_SCREEN_WIDTH
+#define XPT2046_PARAM_YMAX          LCD_SCREEN_HEIGHT
+#define XPT2046_PARAM_RAW_XMIN      (202U)
+#define XPT2046_PARAM_RAW_XMAX      (3820U)
+#define XPT2046_PARAM_RAW_YMIN      (264U)
+#define XPT2046_PARAM_RAW_YMAX      (3837U)
+#define XPT2046_PARAM_XYCONV        (XPT2046_MIRROR_Y)
+/** @} */
+
+/**
  * @name    ztimer configuration values
  * @{
  */

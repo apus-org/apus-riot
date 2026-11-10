@@ -40,6 +40,8 @@ setup.
 |------|----------|
 | [boards/](boards/) | board definition |
 | [docs/](docs/) | documentation |
+| [modules/](modules/) | drivers for the on-board chips, to be upstreamed |
+| [tests/](tests/) | test applications for these drivers |
 
 ## License
 
