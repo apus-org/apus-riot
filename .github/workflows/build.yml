@@ -56,7 +56,12 @@ jobs:
           tests/sys/ztimer_overhead
           ../apus-riot/tests/xpt2046
           ../apus-riot/tests/xpt2046 XPT2046_POLLING_MODE=1
+          ../apus-riot/tests/mcp79410
           EOF
           echo "::group::tests/xpt2046 USEMODULE=touch_dev"
           USEMODULE=touch_dev make -C apus-riot/tests/xpt2046
+          echo "::endgroup::"
+          echo "::group::tests/sys/walltime walltime_impl_mcp79410"
+          EXTERNAL_MODULE_DIRS="$GITHUB_WORKSPACE/apus-riot/modules" \
+            USEMODULE=walltime_impl_mcp79410 make -C RIOT/tests/sys/walltime
           echo "::endgroup::"

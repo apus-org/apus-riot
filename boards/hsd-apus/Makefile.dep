@@ -12,3 +12,7 @@ endif
 ifneq (,$(filter st7789,$(USEMODULE)))
   USEMODULE += lcd_parallel
 endif
+
+ifneq (,$(filter walltime_impl_mcp79410,$(USEMODULE)))
+  USEMODULE += mcp79410
+endif

@@ -93,6 +93,14 @@ extern "C" {
 /** @} */
 
 /**
+ * @name    MCP79410 RTC, alarm and square-wave output (MFP) on PD3
+ * @{
+ */
+#define MCP79410_PARAM_I2C          I2C_DEV(0)
+#define MCP79410_PARAM_VBAT_ENABLE  true
+/** @} */
+
+/**
  * @name    LCD display (ST7789, MCU 8080 8-bit parallel interface)
  * @{
  */
