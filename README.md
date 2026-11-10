@@ -23,10 +23,10 @@ git clone https://github.com/apus-org/apus-riot.git
 Build and flash an example:
 
 ```bash
-make -C RIOT/examples/basic/blinky BOARD=hsd-apus EXTERNAL_BOARD_DIRS=$PWD/apus-riot/boards flash
+EXTERNAL_BOARD_DIRS=$PWD/apus-riot/boards make -C RIOT/examples/basic/blinky BOARD=hsd-apus flash
 ```
 
-`make flash` uses OpenOCD through the on-board ST-Link.
+`make flash` uses RIOT's default STM32 programmer, OpenOCD.
 
 ## Requirements
 
